@@ -1,0 +1,75 @@
+services:
+  alpinexfcevnc:
+    image: my-alpine-desktop
+    container_name: alpinexfcevnc
+    
+    # Port mappings
+    ports:
+      - "5900:5900"  # VNC port
+      - "6080:6080"  # Web VNC port
+    
+    # Volume mounts
+    volumes:
+      # Application data
+      - ./config:/config                    # Application configuration
+      - ./root:/root                        # Root user home directory
+      - ./shared:/shared                    # Shared files
+      
+      # Software directories
+      - ./opt:/opt                          # Optional software
+      - ./usr/local:/usr/local              # Custom installed software
+      - ./roms:/roms                        # ROM files
+      
+      # System mounts
+      - /tmp/.X11-unix:/tmp/.X11-unix      # X11 socket for display
+      - /run/user/1000/pulse:/run/pulse    # PulseAudio socket for sound
+
+      - /var/run/dbus:/var/run/dbus        # For D-Bus communication
+    
+    # Environment variables
+    environment:
+      # VNC settings
+      - VNC_PASSWORD=YOUR_PASSWORD
+      - SECURE_CONNECTION=0
+      
+      # Display settings
+      - DISPLAY=:0
+      - XDG_RUNTIME_DIR=/tmp
+      - PULSE_SERVER=unix:/run/pulse/native
+      
+      # NVIDIA settings
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    
+    # Device access
+    devices:
+      - /dev/dri:/dev/dri                       # GPU/Graphics access
+    
+    # NVIDIA runtime configuration
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+    # command: >
+    #   sh -c "mkdir -p /var/run/dbus &&
+    #          dbus-daemon --system --nofork --nopidfile & 
+    #          sleep 2 &&
+    #          bluetoothd &
+    #          # your original command here"
+    
+    # Security and access settings
+    security_opt:
+      - seccomp=unconfined                 # Less restrictive security for emulators
+    ipc: host                              # For better hardware access
+    # network_mode: "host"
+    privileged: true
+
+# Named volumes for persistent storage
+volumes:
+  alpine-home:
+  alpine-data:

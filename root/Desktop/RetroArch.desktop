@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=RetroArch
+Comment=Frontend for emulators, game engines and media players
+Exec=retroarch
+Icon=applications-games
+Path=
+Terminal=false
+StartupNotify=false

@@ -1,0 +1,5 @@
+https:contile.services.mozilla.com:443:.::3	0	20207	https:contile.services.mozilla.com:443:contile.services.mozilla.com:443::n:1748501427:h3:y:1745909426:n::|n:y:
+https:ads-img.mozilla.org:443:.::3	0	20207	https:ads-img.mozilla.org:443:ads-img.mozilla.org:443::n:1745909430:h3:n:1745909426:n::|n:y:
+https:classify-client.services.mozilla.com:443:.::3	0	20207	https:classify-client.services.mozilla.com:443:classify-client.services.mozilla.com:443::n:1748501428:h3:y:1745909426:n::|n:y:
+https:accounts.firefox.com:443:.::3	0	20207	https:accounts.firefox.com:443:accounts.firefox.com:443::n:1748501427:h3:y:1745909426:n::|n:y:
+https:location.services.mozilla.com:443:.::3	0	20207	https:location.services.mozilla.com:443:location.services.mozilla.com:443::n:1748501426:h3:y:1745909426:n::|n:y:
