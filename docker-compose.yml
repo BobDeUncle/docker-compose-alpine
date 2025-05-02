@@ -68,6 +68,7 @@ services:
     ipc: host                              # For better hardware access
     # network_mode: "host"
     privileged: true
+    restart: unless-stopped
 
 # Named volumes for persistent storage
 volumes:
